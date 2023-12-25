@@ -1,0 +1,54 @@
+{% extends 'blog/master.html' %}
+{% block title %}Home page{% endblock %}
+{% block css %}
+<style>
+    h1{color:red;}
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-6 mx-auto">
+
+            {{ msg }}
+
+            <form action="moredata">
+                <div class="form-group">
+                    <label>Ename :</label>
+                    <input type="text" class="'form-control" name="ename" required>
+                </div>
+
+                <input type="submit" class="btn btn-primary" name="sub" value="Display">
+                <input type="submit" class="btn btn-danger" name="sub" value="Delete" >
+                <input type="submit" class="btn btn-info" name="sub" value="Edit" >
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="contariner mt-5 mb-5">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <tr><th>Ename</th>
+                    <th>Elocation</th>
+                    <th>Esal</th>
+                </tr>
+
+                <tr><th>{{data.ename}}</th>
+                    <th>{{data.eloc}}</th>
+                    <th>{{data.esal}}</th>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

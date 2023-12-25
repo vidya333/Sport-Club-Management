@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+{% block title %} User Login Page {% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-xl-6 col-lg-6 col-mx-auto">
+          <form method="POST" action="update_pass">
+            {% csrf_token %}
+              <input type="hidden" name="emailid" value={{email}} />
+              <div class="form-group">
+              <label for="pass">Enter new Password :</label>
+              <input type="text" class="form-control" id="pass" name="pass">
+            </div>
+              <button type="submit" class="btn btn-primary"> Submit </button>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

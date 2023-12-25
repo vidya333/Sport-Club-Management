@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+{% block title %} Add event Page {% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-xl-6 col-lg-6 col-mx-auto">
+          <form method="POST" action="db_add_event">
+           <h2>{{status}}</h2>
+            <h2>{{msg}}</h2>
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="ename"  required>
+            </div>
+            <div class="form-group">
+              <label for="date">Date:</label>
+              <input type="date" class="form-control" id="date" name="edate" min="{{date}}" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Time:</label>
+              <input type="time" class="form-control" id="time" name="etime" required>
+            </div>
+            <div class="form-group">
+              <label for="dur">Duration:</label>
+              <input type="text" class="form-control" id="dur" name="eduration"  required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

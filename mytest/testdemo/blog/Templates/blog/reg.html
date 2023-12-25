@@ -1,0 +1,74 @@
+{% extends 'blog/master.html' %}
+{% block title %}Home page{% endblock %}
+{% block css %}
+<style>
+    h1{color:red;}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-6 mx-auto">
+
+            {{ msg }}
+
+            <form action="getform">
+                <div class="form-group">
+                    <label>Ename :</label><br>
+                    <input type="text" class="'form-control" name="ename"  required>
+                </div>
+                <div class="form-group">
+                    <label>Elocation :</label><br>
+                    <input type="text" class="'form-control" name="eloc" required>
+                </div>
+                <div class="form-group">
+                    <label>Esal :</label><br>
+                    <input type="text" class="'form-control" name="esal" required>
+                </div>
+                <input type="submit" class="btn btn-primary" name="sub" value="Insert">
+                <input type="submit" class="btn btn-primary" name="sub" value="Display" formnovalidate>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="contariner mt-5 mb-5">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <tr><th>Ename</th>
+                    <th>Elocation</th>
+                    <th>Esal</th>
+                    <th>Action</th>
+
+                </tr>
+                {% for x in data %}
+                <tr><td>{{x.ename}}</td>
+                    <td>{{x.eloc}}</td>
+                    <td>{{x.esal}}</td>
+                    <td><a class='btn btn-danger' href="{% url 'action' %}?name={{x.ename}}">Delete</a>
+                        <a class='btn btn-info' href="{% url 'edit' %}?name={{x.ename}}">Edit</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            {% for x in data %}-->
+<!--                {{x.ename}}-->
+<!--                {{x.eloc}}-->
+<!--                {{x.esal}}-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+{% endblock %}

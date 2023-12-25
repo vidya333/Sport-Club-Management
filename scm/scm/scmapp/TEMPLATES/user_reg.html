@@ -1,0 +1,39 @@
+{% extends 'master.html' %}
+{% block title %} User Registration Page {% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-xl-6 col-lg-6 col-mx-auto">
+          <form method="POST" action="user_test">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="uname">UserName :</label>
+              <input type="text" class="form-control" id="uname" name="uname">
+            </div>
+            <div class="form-group">
+              <label for="email">Email address :</label>
+              <input type="email" class="form-control" id="email" name="email">
+              <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group form-check">
+              <input type="radio" class="form-check-input" id="gender1" name="gender" value="Male">
+              <label class="form-check-label" >Male</label><br>
+              <input type="radio" class="form-check-input" id="gender" name="gender" value="Female">
+              <label class="form-check-label" >Female</label>
+            </div>
+            <div class="form-group">
+              <label >Password :</label>
+              <input type="password" class="form-control"  name="password">
+            </div>
+            <div class="form-group">
+              <label >Contact no.</label>
+              <input type="text" class="form-control" id="contact" name="contact">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="user_login">Allready Registered ?- login</a>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

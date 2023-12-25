@@ -1,0 +1,65 @@
+{% extends 'blog/master.html' %}
+
+{% block title %}Upload Product page{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
+            <h1>{{ msg }}</h1>
+            <form method="post" action="uploaddata" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group" ><label>Product Name</label>
+                    <input type="text" name="pname" class="form-control">
+                </div>
+                <div class="form-group" ><label>Product Category</label>
+                    <input type="text" name="pcat" class="form-control">
+                </div>
+                <div class="form-group" ><label>Product Sub Category</label>
+                    <input type="text" name="pscat" class="form-control">
+                </div>
+                <div class="form-group" ><label>Product price</label>
+                    <input type="text" name="pprice" class="form-control">
+                </div>
+                <div class="form-group" ><label>Product Date</label>
+                    <input type="date" name="pdate" class="form-control">
+                </div>
+                <div class="form-group" ><label>Product Image</label>
+                    <input type="file" name="pimg" class="form-control">
+                </div>
+                <input type="submit" name="sub" value="Insert" class="btn btn-primary">
+                <input type="submit" name="sub" value="Display" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-lg-8 col-xl-8 mx-auto">
+            <table class="table table-hover">
+                <tr><th>Product Name</th>
+                    <th>Product Category</th>
+                    <th>Product Sub category</th>
+                    <th>Product Price</th>
+                    <th>Product Date</th>
+                    <th>            </th>
+                </tr>
+                {% for x in data %}
+                <tr>
+                    <td>{{ x.product_name}}</td>
+                    <td>{{x.product_cat}}</td>
+                    <td>{{x.product_subcat}}</td>
+                    <td>{{x.product_price}}</td>
+                    <td>{{x.product_date}}</td>
+                    <td><img src="/media/{{x.product_image}}" width="100" height="100"> </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
